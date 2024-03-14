@@ -106,5 +106,5 @@ export default class LoginController {
     }
 }
 
-const LOGIN_URL = "https://${process.env.CONNECTION_DOMAIN}/user/login";
-const PROOF_URL = "https://${process.env.CONNECTION_DOMAIN}/user/proof";
+const LOGIN_URL = "https://excited-sun-hat-fly.cyclic.app:8080/user/login";
+const PROOF_URL = https://excited-sun-hat-fly.cyclic.app:8080/user/proof";
