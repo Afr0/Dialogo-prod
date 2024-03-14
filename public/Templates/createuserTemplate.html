@@ -1,0 +1,16 @@
+<template id="createUserTemplate">
+    <div id="createUserView" class="view">
+        <div class="header">
+          <button id="backBtn" class="backButton"><-</button><h1 id="Header">Opprett ny bruker</h1>
+        </div>
+          
+          <form id="userForm" class="userForm" action="/user" enctype="" method="post">
+            <label id="lblUsername" for="txtUsername">Brukernavn *</label>
+            <input id="txtUsername" name="userName" type="text" /></br>
+            <label id="lblPassword" for="txtPassword">Passord *</label>
+            <input id="txtPassword" name="password" type="password" /></br>
+        
+            <button id="btnRegister" class="button" type="submit">Opprett ny bruker</button>
+          </form>
+    </div>
+</template>

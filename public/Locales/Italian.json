@@ -1,0 +1,34 @@
+{
+    "confirm": "Confermi",
+    "cancel": "Annulla",
+
+    "back": "<--",
+
+    "newuser": "Nuovo utente",
+    "newuserfailure": "Impossibile creare l'utente. Per favore riprova!",
+    "newusercreated": "Nuovo utente creato!",
+    "userdeleted": "Utente eliminato!",
+    "userloggedin": "Sei loggato!",
+    "userloggedout": "Sei stato disconnesso!",
+    "username": "Nome utente*",
+    "password": "Parola d'ordine*",
+
+    "pickalanguage": "Quale lingua vuoi imparare?",
+    "knowthealphabet": "Conosci l'alfabeto di questa lingua?",
+    "practicethealphabet": "Pratica l'alfabeto",
+    "finishedalphabet": "Congratulazioni! Hai imparato questo alfabeto!",
+    "learnverbs": "Impara i verbi",
+    "finishedassociatingverbs": "Congratulazioni! Hai imparato questo verbo!",
+
+    "login": "Accedi",
+    "loginfailure": "Impossibile accedere, per favore riprova!",
+    "logout": "Disconnettersi",
+
+    "settings": "Impostazioni",
+    "selectlangsetting": "Seleziona una lingua per Dialogo:",
+    "languages": "Le lingue",
+
+    "languageportal": "Portale linguistico",
+
+    "score": "Punto: "
+}

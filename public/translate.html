@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Translate sentences</title>
+  <link rel="stylesheet" href="./Style.css">
+</head>
+<body>
+  <div class="header">
+    <h1>Translate words</h1>
+    <textarea id="txtSentences" placeholder="Please enter words to translate."></textarea>
+    <button id="btnSubmit" class="button">Translate!</button>
+  </div>
+
+  <!--Order is critically important. The controller depends on the other two, so
+      has to be imported last.-->
+  <script src="DialogoModel.js" type="module"></script>
+  <script src="./Views/TranslateView.js" type="module"></script>
+  <script src="./Controllers/TranslateController.js" type="module"></script>
+</body>
+</html>
+

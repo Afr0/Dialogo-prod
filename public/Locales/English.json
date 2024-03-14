@@ -1,0 +1,34 @@
+{
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+
+    "back": "<--",
+
+    "newuser": "New User",
+    "newuserfailure": "Couldn't create new user. Please try again!",
+    "newusercreated": "New user created!",
+    "userdeleted": "User deleted!",
+    "userloggedin": "You were logged in!",
+    "userloggedout": "You were logged out!",
+    "username": "Username*",
+    "password": "Password*",
+
+    "pickalanguage": "Which language do you want to learn?",
+    "knowthealphabet": "Do you know the alphabet of this language?",
+    "practicethealphabet": "Practice the alphabet",
+    "finishedalphabet": "Congratulations! You learned this alphabet!",
+    "learnverbs": "Learn verbs",
+    "finishedassociatingverbs": "Congratulatons! You learned this verb!",
+
+    "login": "Log in",
+    "loginfailure": "Couldn't log in, please try again!",
+    "logout": "Log out",
+
+    "settings": "Settings",
+    "selectlangsetting": "Please select a language for Dialogo:",
+    "languages": "Languages",
+
+    "languageportal": "Language portal",
+
+    "score": "Score: "
+}

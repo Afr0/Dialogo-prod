@@ -1,0 +1,15 @@
+{
+    "name": "Dialogo",
+    "short_name": "Dialogo",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#F2E205",
+    "description": "A language learning app for English, Italian and Russian.",
+    "icons": [
+        {
+            "src": "data/images/icon.png",
+            "sizes": "150x150",
+            "type": "image/png"
+        }
+    ]
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Dialogo">
+    <title>Dialogo</title>
+    <link rel="stylesheet" href="./Style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<style>
+    .buttonContainer {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 10px;
+        position: absolute;
+        bottom: 16px;
+        right: 16px;
+        left: 16px;
+        justify-content: center;
+    }
+
+    .btnNewUser, .btnLogin, .btnSettings, .btnStart {
+        flex: 1 1 auto;
+        flex-grow: 1;
+        margin: 5px;
+        max-width: 150px;
+    }
+
+    .btnNewUser {
+        background-color: #F2CB05;
+        color: #594B02;
+        border-radius: 50%;
+    }
+    .btnLogin {
+        background-color: #F2CB05;
+        color: #594B02;
+        border-radius: 50%;
+    }
+    .btnSettings {
+        background-color: #F2CB05;
+        color: #594B02;
+        border-radius: 50%;
+    }
+    .btnStart {
+        background-color: #F2CB05;
+        color: #594B02;
+        border-radius: 50%;
+    }
+</style>
+
+<body>
+    <div id="loginView" class="view" style="display:none;">
+    </div> 
+
+    <!--Order is critically important. The controller depends on the other two, so
+        has to be imported last.-->
+        <!--<script src="DialogoModel.js" type="module"></script>
+        <script src="./Views/IndexView.js" type="module"></script>
+        <script src="./Controllers/IndexController.js" type="module"></script>-->
+    <script src="bundle.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+/*Cross-site styling for Dialogo.*/
+
+.header {
+    color: #020126;
+    background-color: #F2E205;
+    font-weight: bold;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 16px;
+}
+
+.backButton {
+    background-color: #F2CB05;
+    color: #594B02;
+    border-radius: 50%;
+}
+
+/* Generic button style, same as for backButton. */
+.button {
+    background-color: #F2CB05;
+    color: #594B02;
+    border-radius: 50%;
+}
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #F2CB05;
+    color: #594B02;
+    padding: 16px;
+    border-radius: 8px;
+    /*Make sure toasts appear on top of all other elements by giving them a high z-index.*/
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    opacity: 0;
+    /*.5 secs fadein, .5 secs fadeout, 3.5 secs for full animation. */
+    animation: fadein 0.5s, fadeout 0.5s 3.5s;
+    
+    /*Got this fix from, of all things, a Pixar programming tutorial: 
+    https://www.youtube.com/watch?v=G9207EJySaA&pp=ygUacGl4YXIgcHJvZ3JhbW1pbmcgdHV0b3JpYWw%3D*/
+    animation-fill-mode: forwards;
+}
+
+/*Fade in from 0px with 0 opacity to 20px with full opacity. */
+@keyframes fadein {
+    from { bottom: 0; opacity: 0; }
+    to { bottom: 20px; opacity: 1; }
+}
+
+/*Fade out from whence it came, essentially in reverse. */
+@keyframes fadeout {
+    from { bottom: 20px; opacity: 1; }
+    to { bottom: 0; opacity: 0; }
+}
+
+body {
+    background-color: #F2E205;
+    color: #020126;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100%;
+}
+
+/** LANGUAGE SELECTION VIEW */
+
+.flags-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.flag {
+    width: 100px;
+    height: auto;
+}
+
+/** ALPHABET GAME */
+
+.currentChar {
+    font-size: 96px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.currentAppChar {
+    font-size: 50px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.currentCharDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/**ASSOCIATE VERBS GAME**/
+
+.score {
+    color: #020126;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+}
+
+#pronouns-container, #verbs-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.pronoun, .verb {
+    color: #594B02;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    padding: 10px;
+    border: 2px solid #020126;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.verb {
+    background-color: #F2c205;
+}
+
+/** LANGUAGE PORTAL **/
+
+.btnAlphabet, .btnVerbs {
+    background-color: #F2CB05;
+    color: #594B02;
+    border-radius: 50%;
+
+    flex: 1 1 auto;
+    flex-grow: 1;
+    margin: 5px;
+    max-width: 150px;
+}

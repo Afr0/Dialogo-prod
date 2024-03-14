@@ -1,0 +1,34 @@
+{
+    "confirm": "Подтвердите",
+    "cancel": "Отмена",
+
+    "back": "<--",
+
+    "newuser": "Новый пользователь",
+    "newuserfailure": "Не удалось создать пользователя. Пожалуйста, попробуйте еще раз!",
+    "newusercreated": "Новый пользователь создан!",
+    "userdeleted": "Пользователь удален!",
+    "userloggedin": "Вы вошли в систему",
+    "userloggedout": "Вы вышли из системы!",
+    "username": "Имя пользователя*",
+    "password": "Пароль*",
+
+    "pickalanguage": "Какой язык хотите ли вы учить?",
+    "knowthealphabet": "Знаете ли вы алфавит этого языка?",
+    "practicethealphabet": "Практикуйтесь в алфавите",
+    "finishedalphabet": "Поздравляем! Вы выучили этот алфавит!",
+    "learnverbs": "Изучайте глаголы",
+    "finishedassociatingverbs": "Поздравляем! Вы выучили этот глагол!",
+
+    "login": "Логин пользователя",
+    "loginfailure": "Не удалось войти, попробуйте еще раз!",
+    "logout": "Выйти",
+
+    "settings": "Настройки",
+    "selectlangsetting": "Пожалуйста, выберите язык для Dialogo:",
+    "languages": "Языки",
+
+    "languageportal": "Языковой портал",
+
+    "score": "Счет: "
+}
