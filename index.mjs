@@ -38,8 +38,8 @@ server.use("/translations", TRANSLATION_API);
 server.use("/verbs", VERB_API);
 
 // Enable logging for server
-const logger = new SuperLogger();
-server.use(logger.createAutoHTTPRequestLogger()); // Will log all http method requests
+/*const logger = new SuperLogger();
+server.use(logger.createAutoHTTPRequestLogger());*/ // Will log all http method requests
 
 // A get request handler example
 server.get("/", (req, res) => {
