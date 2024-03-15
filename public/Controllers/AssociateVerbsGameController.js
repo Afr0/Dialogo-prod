@@ -3,6 +3,7 @@ import AssociateVerbsGameView from "../Views/AssociateVerbsGameView.js";
 import LanguageManager, { Languages } from "../LanguageManager.js";
 import IndexController from "./IndexController.js";
 import LanguagePortalController from "./LanguagePortalController.js";
+import DragnDrop from "drag-drop-touch";
 
 /**
  * Controller for the Login view.
