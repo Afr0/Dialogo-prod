@@ -144,4 +144,6 @@ class DBManager {
     }
 }
 
-export default new DBManager(process.env.DB_CONNECTIONSTRING);
+let connectionString = process.env.DB_CONNECTIONSTRING;
+const actualConnectionString = connectionString.replace('${DB_PASSWORD}', process.env.DB_PASSWORD);
+export default new DBManager(actualConnectionString);
