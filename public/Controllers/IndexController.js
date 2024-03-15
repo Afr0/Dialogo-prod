@@ -31,6 +31,8 @@ export default class IndexController {
         this.#Model = mainModel;
         this.#View = mainView;
         this.#View.onLogout(async () => await this.#logout(this.#View));
+        
+        this.#Model.deleteSession(); //In case someone forgets to log out...
     }
 
     /**Static constructor for IndexController. */
@@ -98,7 +100,7 @@ export default class IndexController {
     }
 }
 
-const LOGOUT_URL = "http://${process.env.CONNECTION_DOMAIN}/user/logout";
+const LOGOUT_URL = "./user/logout";
 
 //Ensure the Controller is initialized when the webpage has been
 //loaded.
