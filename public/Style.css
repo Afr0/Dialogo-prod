@@ -63,15 +63,6 @@ body {
 
 /** LANGUAGE SELECTION VIEW */
 
-/*Mobile devices.*/
-@media (max-width: 414px) {
-    .flags-container {
-        gap: 10px;
-        overflow-wrap: break-word;
-        word-wrap: break-word;
-    }
-}
-
 .flags-container {
     display: flex;
     justify-content: center;
@@ -94,7 +85,6 @@ body {
 
 .currentAppChar {
     font-size: 50px;
-    cursor: pointer;
     text-align: center;
 }
 
@@ -103,6 +93,28 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+/** VERB GAME */
+
+.currentVerb {
+    font-size: 96px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.currentAppVerb {
+    font-size: 50px;
+    text-align: center;
+}
+
+/*Mobile devices.*/
+@media (max-width: 414px) {
+    .currentVerb {
+        font-size: 76px;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
 }
 
 /**ASSOCIATE VERBS GAME**/
@@ -117,6 +129,16 @@ body {
     display: flex;
     justify-content: space-around;
     padding: 20px;
+}
+
+/*Mobile devices.*/
+@media (max-width: 414px) {
+    .verbs-container {
+        gap: 10px;
+        padding: 45px;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
 }
 
 .pronoun, .verb {
