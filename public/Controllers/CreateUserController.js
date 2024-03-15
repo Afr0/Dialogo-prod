@@ -57,4 +57,4 @@ export default class CreateUserController {
     }
 }
 
-const CREATEUSER_URL = "https://${process.env.CONNECTION_DOMAIN}/user";
+const CREATEUSER_URL = "https://" + DialogoModel.COMNECTION_DOMAIN + "/user";

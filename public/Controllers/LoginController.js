@@ -106,5 +106,5 @@ export default class LoginController {
     }
 }
 
-const LOGIN_URL = "https://excited-sun-hat-fly.cyclic.app:8080/user/login";
-const PROOF_URL = "https://excited-sun-hat-fly.cyclic.app:8080/user/proof";
+const LOGIN_URL = "https://" + DialogoModel.COMNECTION_DOMAIN + "/user/login";
+const PROOF_URL = "https://" + DialogoModel.COMNECTION_DOMAIN + "/user/proof";
