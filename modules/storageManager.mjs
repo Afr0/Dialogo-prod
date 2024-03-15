@@ -15,13 +15,18 @@ class DBManager {
     #pool;
 
     constructor() {
-        this.#pool = new pg.Pool({
-            connectionString: process.env.DB_CONNECTIONSTRING.replace('${DB_PASSWORD}', process.env.DB_PASSWORD),
-            ssl: {
-                rejectUnauthorized: true,
-                ca: fs.readFileSync('ca-central-1-bundle.pem').toString(),
-            }
-        });
+        try {
+            this.#pool = new pg.Pool({
+                connectionString: process.env.DB_CONNECTIONSTRING.replace('${DB_PASSWORD}', process.env.DB_PASSWORD),
+                ssl: {
+                    rejectUnauthorized: true,
+                    ca: fs.readFileSync('../ca-central-1-bundle.pem').toString(),
+                }
+            });
+        }
+        catch(error) {
+            console.log("Unable to read *.pem: " + error);
+        }
     }
 
     /**Returns a user based on the username, or null if the user didn't exist.
