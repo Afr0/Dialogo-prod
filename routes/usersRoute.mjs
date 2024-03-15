@@ -32,7 +32,7 @@ var clientEphemerals = {};
 USER_API.get('/:id', (req, res) => {
     let { id } = req.params;
 
-    let user = users.find(user => user.getId() === id);
+    let user = users.find(user => user && user.getId() === id);
 
     if (user)
         res.status(HttpCodes.SuccessfulResponse.Ok).json(user);
@@ -69,7 +69,7 @@ USER_API.post('/', express.json(), preferredLanguage, async (req, res) => {
 USER_API.post('/login', express.json(), async (req, res) => {
     let { userName, ephemeral } = req.body;
 
-    let user = users.find(user => user.getUsername() === userName);
+    let user = users.find(user => user && user.getUsername() === userName);
 
     try {
         if(!user) {
@@ -95,7 +95,7 @@ USER_API.post('/proof', express.json(), async (req, res) => {
     let { userName, proof } = req.body;
     let serverSecretEphemeral = serverSecrets[userName];
 
-    let user = users.find(user => user.getUsername() === userName);
+    let user = users.find(user => user && user.getUsername() === userName);
     if(!user) {
         console.log("Trying to get user from DB...");
         user = await User.getUser(userName);
@@ -162,7 +162,7 @@ USER_API.put('/', express.json(), async (req, res) => {
 
     if(session) {
         console.log("Found session, updating user...");
-        let user = users.find(user => user.getUsername() === userName);
+        let user = users.find(user => user && user.getUsername() === userName);
         user.setPreferredLanguage(preferredLanguage);
         console.log("Alphabets known: " + knownAlphabets);
         if(knownAlphabets)
