@@ -1,4 +1,4 @@
-import DialogoModel from "../DialogoModel.js";
+import DialogoModel from "DialogoModel.js";
 
 export default class TemplateManager {
     static templateNames = ["indexTemplate", "languageStartTemplate", "createuserTemplate", 
