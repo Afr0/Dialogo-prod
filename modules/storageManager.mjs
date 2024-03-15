@@ -2,7 +2,6 @@ import pg from "pg"
 import SuperLogger from "./SuperLogger.mjs";
 import User from "./user.mjs";
 import Verb from "./Verb.mjs";
-import fs from "fs";
 
 // We are using an enviorment variable to get the db credentials 
 if (process.env.DB_CONNECTIONSTRING == undefined)
@@ -16,13 +15,10 @@ class DBManager {
 
     constructor() {
         try {
-            this.#pool = new pg.Pool({
-                connectionString: process.env.DB_CONNECTIONSTRING.replace('${DB_PASSWORD}', process.env.DB_PASSWORD),
-                ssl: {
-                    rejectUnauthorized: true,
-                    ca: fs.readFileSync('../ca-central-1-bundle.pem').toString(),
-                }
-            });
+            this.#credentials = {
+                connectionString,
+                ssl: (process.env.DB_SSL === "true") ? process.env.DB_SSL : false
+            };
         }
         catch(error) {
             console.log("Unable to read *.pem: " + error);
@@ -33,12 +29,11 @@ class DBManager {
      * @param {string} [userName=""] The user's username.
      */
     async getUser(userName="") {
-        //let client = new pg.Client(this.#credentials);
+        let client = new pg.Client(this.#credentials);
 
         try {
             console.log("Trying to retrieve user from DB...");
-            //await client.connect();
-            let client = await this.#pool.connect();
+            await client.connect();
             let result = await client.query('SELECT id, name, password, salt, preferredLanguage, alphabetsknown FROM "public"."Users" WHERE name = $1;', [userName]);
             if (result.rows.length > 0) {
                 let userRow = result.rows[0];
@@ -57,11 +52,10 @@ class DBManager {
     }
 
     async updateUser(user) {
-        //const client = new pg.Client(this.#credentials);
+        const client = new pg.Client(this.#credentials);
 
         try {
-            //await client.connect();
-            let client = await this.#pool.connect();
+            await client.connect();
             const output = await client.query('Update "public"."Users" set "name" = $1, "password" = $2, "salt" = $3, preferredLanguage = $4, "alphabetsknown" = $5 where id = $6;', [user.getUsername(), user.getVerifier(), user.getSalt(), user.getPreferredLanguage(), user.getAlphabetsKnown(), user.getId()]);
 
             // Client.Query returns an object of type pg.Result (https://node-postgres.com/apis/result)
@@ -80,12 +74,10 @@ class DBManager {
     }
 
     async deleteUser(user) {
-
-        //const client = new pg.Client(this.#credentials);
+        const client = new pg.Client(this.#credentials);
 
         try {
-            //await client.connect();
-            let client = await this.#pool.connect();
+            await client.connect();
             const output = await client.query('Delete from "public"."Users"  where id = $1;', [user.id]);
 
             //Client.Query returns an object of type pg.Result (https://node-postgres.com/apis/result)
@@ -103,11 +95,10 @@ class DBManager {
     }
 
     async createUser(user) {
-        //const client = new pg.Client(this.#credentials);
+        const client = new pg.Client(this.#credentials);
 
         try {
-            //await client.connect();
-            let client = await this.#pool.connect();
+            await client.connect();
             const output = await client.query('INSERT INTO "public"."Users"("name", "password", "salt", preferredLanguage, "alphabetsknown") VALUES($1::Text, $2::Text, $3::Text, $4::Integer, $5::Text) RETURNING id;', [user.getUsername(), user.getVerifier(), user.getSalt(), user.getPreferredLanguage(), user.getAlphabetsKnown()]);
 
             // Client.Query returns an object of type pg.Result (https://node-postgres.com/apis/result)
@@ -132,13 +123,13 @@ class DBManager {
      * @returns An object containing all the verbs in the DB.
     */
     async getVerbs() {
-        //let client = new pg.Client(this.#credentials);
+        let client = new pg.Client(this.#credentials);
         let verbs = {}
 
         try {
             console.log("Trying to retrieve verbs from DB...");
-            //await client.connect();
-            let client = await this.#pool.connect();
+            await client.connect();
+
             let result = await client.query('SELECT * FROM "public"."Verbs";');
             if (result.rows.length > 0) {
                 result.rows.forEach(row => {
