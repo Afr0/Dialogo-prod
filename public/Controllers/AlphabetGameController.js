@@ -4,8 +4,8 @@ import LanguageManager, { Languages } from "../LanguageManager.js";
 import IndexController from "../Controllers/IndexController.js";
 import LanguagePortalController from "./LanguagePortalController.js";
 
-const ALPHABET_DIR = "data/alphabets/";
-const ALPHABET_SOUNDS_DIR = "data/sounds/alphabets/";
+const ALPHABET_DIR = "./data/alphabets/";
+const ALPHABET_SOUNDS_DIR = "./data/sounds/alphabets/";
 
 /**
  * Controller for the Login view.
