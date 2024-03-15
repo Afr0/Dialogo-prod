@@ -63,6 +63,15 @@ body {
 
 /** LANGUAGE SELECTION VIEW */
 
+/*Mobile devices.*/
+@media (max-width: 414px) {
+    .flags-container {
+        gap: 10px;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+}
+
 .flags-container {
     display: flex;
     justify-content: center;
