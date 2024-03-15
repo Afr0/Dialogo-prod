@@ -85,7 +85,7 @@ export default class AlphabetGameController {
      */
     async #loadLanguage(language = "") {
         console.log("Loading language: " + ALPHABET_DIR + language.toLowerCase() + ".alphabet");
-        return fetch(ALPHABET_DIR + language + ".alphabet")
+        return fetch(ALPHABET_DIR + language.toLowerCase() + ".alphabet")
             .then(response => {
                 if (response.ok) {
                     return response.text();
