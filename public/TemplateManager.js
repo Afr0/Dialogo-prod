@@ -4,7 +4,7 @@ export default class TemplateManager {
     static templateNames = ["indexTemplate", "languageStartTemplate", "createuserTemplate", 
                             "loginTemplate", "learnAlphabetTemplate", "settingsTemplate",
                             "languageportalTemplate", "learnVerbsTemplate", "associateVerbsTemplate"];
-    static templatesDir = "https://" + DialogoModel.CONNECTION_DOMAIN + "Templates/";
+    static templatesDir = "./Templates/";
 
     static initializeTemplates() {
         return Promise.all(this.templateNames.map(file => {

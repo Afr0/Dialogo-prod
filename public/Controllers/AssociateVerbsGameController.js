@@ -45,4 +45,4 @@ export default class AssociateVerbsGameController {
     }
 }
 
-const VERBS_URL = "https://" + DialogoModel.COMNECTION_DOMAIN + "/verbs/";
+const VERBS_URL = "./verbs/";

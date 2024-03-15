@@ -106,5 +106,5 @@ export default class LoginController {
     }
 }
 
-const LOGIN_URL = "https://" + DialogoModel.COMNECTION_DOMAIN + "/user/login";
-const PROOF_URL = "https://" + DialogoModel.COMNECTION_DOMAIN + "/user/proof";
+const LOGIN_URL = "./user/login";
+const PROOF_URL = "./user/proof";

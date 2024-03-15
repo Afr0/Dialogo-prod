@@ -2,7 +2,7 @@ import DialogoModel from "../DialogoModel.js";
 import CreateUserView from "../Views/CreateUserView.js";
 import LanguageManager from "../LanguageManager.js";
 import IndexController from "../Controllers/IndexController.js";
-//node-srp was giving me a LOT of grief because of its insistence on require instead of import,
+//node-srp was giving me a LOT of grief because of its insistence on require instead of require,
 //so ended up using this instead.
 import * as SrpClient from "secure-remote-password/client.js";
 
@@ -57,4 +57,4 @@ export default class CreateUserController {
     }
 }
 
-const CREATEUSER_URL = "https://" + DialogoModel.COMNECTION_DOMAIN + "/user";
+const CREATEUSER_URL = "./user";

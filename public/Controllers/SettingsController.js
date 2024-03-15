@@ -49,4 +49,4 @@ export default class SettingsController {
     }
 }
 
-const SETTINGS_URL = "https://" + DialogoModel.COMNECTION_DOMAIN + "/user/";
+const SETTINGS_URL = "./user/";

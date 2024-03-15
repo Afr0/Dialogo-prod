@@ -516,5 +516,5 @@ export default class DialogoModel {
    static PREFERREDLANGUAGE_CACHE_NAME = "preferredLanguage";
    static KNOWNALPHABETS_CACHE_NAME = "knownAlphabets";
 
-   static COMNECTION_DOMAIN = "excited-sun-hat-fly.cyclic.app:8080";
+   static CONNECTION_DOMAIN = "excited-sun-hat-fly.cyclic.app:8080";
  }
