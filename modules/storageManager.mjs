@@ -20,7 +20,7 @@ class DBManager {
                 connectionString: process.env.DB_CONNECTIONSTRING.replace('${DB_PASSWORD}', process.env.DB_PASSWORD),
                 ssl: {
                     rejectUnauthorized: true,
-                    ca: fs.readFileSync('../ca-central-1-bundle.pem').toString(),
+                    ca: fs.readFileSync('./ca-central-1-bundle.pem').toString(),
                 }
             });
         }
