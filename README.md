@@ -1,11 +1,6 @@
-# starter-express-api
+# Dialogo production repo
 
-This is the simplest possible nodejs api using express that responds to any request with: 
-```
-Yo!
-```
+Dialogo is available at [Render](https://dialogo-27jz.onrender.com/).
 
-### Deploy it in 7 seconds: 
 
-[![Deploy to Cyclic](https://deploy.cyclic.app/button.svg)](https://deploy.cyclic.app/)
 
