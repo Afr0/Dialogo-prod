@@ -31,8 +31,6 @@ export default class IndexController {
         this.#Model = mainModel;
         this.#View = mainView;
         this.#View.onLogout(async () => await this.#logout(this.#View));
-        
-        this.#Model.deleteSession(); //In case someone forgets to log out...
     }
 
     /**Static constructor for IndexController. */
