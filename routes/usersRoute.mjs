@@ -48,23 +48,24 @@ USER_API.post('/', express.json(), preferredLanguage, async (req, res) => {
 
     //u0400-u04FF = Cyrillic alphabet.
     if (!/^[a-æøåA-ÆØÅ0-9\s\u0400-\u04FF]+$/i.test(userName))
-        res.status(HttpCodes.ClientSideErrorResponse.BadRequest).end(); //Fuck off!
+        res.status(HttpCodes.ClientSideErrorResponse.BadRequest).end(); //F*ck off!
 
     if (userName != "" && verifier != "" && salt != "") {
-        let user = new User(userName, verifier, salt);
-
-        //TODO: Does the user exist?
-        let exists = false;
-
-        if (!exists) {
-            //TODO: What happens if this fails?
-            user = await user.save();
-            users.push(user);
-            res.status(HttpCodes.SuccessfulResponse.Ok).json(JSON.stringify(user));
+        let user = users.find(user => user && user.getUsername() === userName);
+        if(!user) {
+            await User.getUser(userName).then(async (user) => {
+                if (!user) {
+                    let newUser = new User(userName, verifier, salt);
+                    newUser = await newUser.save();
+                    users.push(newUser);
+                    res.status(HttpCodes.SuccessfulResponse.Ok).json(JSON.stringify(user));
+                } else {
+                    res.status(HttpCodes.ClientSideErrorResponse.BadRequest).send("User already existed.").end();
+                }
+            });
         } else {
-            res.status(HttpCodes.ClientSideErrorResponse.BadRequest).end();
+            res.status(HttpCodes.ClientSideErrorResponse.BadRequest).send("User already existed.").end();
         }
-
     } else {
         res.status(HttpCodes.ClientSideErrorResponse.BadRequest).send("Missing data field.").end();
     }
