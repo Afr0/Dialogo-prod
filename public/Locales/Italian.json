@@ -4,6 +4,8 @@
 
     "back": "<--",
 
+    "start": "Inizio",
+
     "newuser": "Nuovo utente",
     "newuserfailure": "Impossibile creare l'utente. Per favore riprova!",
     "newusercreated": "Nuovo utente creato!",
@@ -18,7 +20,9 @@
     "practicethealphabet": "Pratica l'alfabeto",
     "finishedalphabet": "Congratulazioni! Hai imparato questo alfabeto!",
     "learnverbs": "Impara i verbi",
+    "associateverbs": "Abbina i verbi ai pronomi!",
     "finishedassociatingverbs": "Congratulazioni! Hai imparato questo verbo!",
+    "goagain": "La pratica rende perfetti! Vuoi andare di nuovo?",
 
     "login": "Accedi",
     "loginfailure": "Impossibile accedere, per favore riprova!",
@@ -27,6 +31,9 @@
     "settings": "Impostazioni",
     "selectlangsetting": "Seleziona una lingua per Dialogo:",
     "languages": "Le lingue",
+
+    "stats": "Statistiche",
+    "alphabetsknown": "Alfabeti conosciuti",
 
     "languageportal": "Portale linguistico",
 

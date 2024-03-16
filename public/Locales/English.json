@@ -4,6 +4,8 @@
 
     "back": "<--",
 
+    "start": "Start",
+
     "newuser": "New User",
     "newuserfailure": "Couldn't create new user. Please try again!",
     "newusercreated": "New user created!",
@@ -18,7 +20,9 @@
     "practicethealphabet": "Practice the alphabet",
     "finishedalphabet": "Congratulations! You learned this alphabet!",
     "learnverbs": "Learn verbs",
+    "associateverbs": "Match the verbs to the pronouns!",
     "finishedassociatingverbs": "Congratulatons! You learned this verb!",
+    "goagain": "Practice makes perfect! Do you want to go again?",
 
     "login": "Log in",
     "loginfailure": "Couldn't log in, please try again!",
@@ -27,6 +31,9 @@
     "settings": "Settings",
     "selectlangsetting": "Please select a language for Dialogo:",
     "languages": "Languages",
+
+    "stats": "Stats",
+    "alphabetsknown": "Alphabets known",
 
     "languageportal": "Language portal",
 
