@@ -65,9 +65,12 @@ export default class AlphabetGameController {
 
         if(sessionID !== null) {
             let knownAlphabets = JSON.parse(sessionStorage.getItem(DialogoModel.KNOWNALPHABETS_CACHE_NAME));
+            
             if(!knownAlphabets)
                 knownAlphabets = {};
+
             knownAlphabets[this.#currentLanguage] = knownAlphabetVal;
+            sessionStorage.setItem(DialogoModel.KNOWNALPHABETS_CACHE_NAME, JSON.stringify(knownAlphabets));
 
             await this.#Model.putData(UPDATEUSER_URL,
                 { sessionID: sessionID, userName: userName, 
