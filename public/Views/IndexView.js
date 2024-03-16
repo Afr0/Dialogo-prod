@@ -9,12 +9,14 @@ export default class IndexView extends DialogoView {
     #btnNewUser;
     #btnStart;
     #btnSettings;
+    #btnStats;
 
     #navigateToLoginEvent;
     #logoutEvent
     #navigateToSettingsEvent;
     #navigateToCreateUserEvent;
     #navigateToLanguageSelectionEvent;
+    #navigateToStatsEvent;
 
     /**Constructs a new IndexView instance.
      * Please use IndexView.createInstance() to create an instance in a consumer class!
@@ -64,6 +66,14 @@ export default class IndexView extends DialogoView {
             });
         }
 
+        this.#btnStats = document.getElementById("btnStats");
+        if(this.#btnStats) {
+            this.#btnStats.addEventListener("click", () => {
+                if(this.#navigateToSettingsEvent)
+                    this.#navigateToStatsEvent();
+            });
+        }
+
         this.setTranslations();
     }
 
@@ -83,6 +93,14 @@ export default class IndexView extends DialogoView {
 
         LanguageManager.getTranslation("newuser").then((translation) => {
             this.#btnNewUser.textContent = translation;
+        });
+
+        LanguageManager.getTranslation("start").then((translation) => {
+            this.#btnStart.textContent = translation;
+        });
+
+        LanguageManager.getTranslation("stats").then((translation) => {
+            this.#btnStats.textContent = translation;
         });
     }
     
@@ -111,6 +129,11 @@ export default class IndexView extends DialogoView {
         this.#navigateToSettingsEvent = callback;
     }
 
+    /**Event handler for assigning a callback to the navigateToStats event. */
+    onNavigatingToStats(callback) {
+        this.#navigateToStatsEvent = callback;
+    }
+
     /**Switches the hidden properties of the login and logout buttons. */
     switchLoginBtn() {
         this.#btnLogout = document.getElementById("btnLogout");
@@ -122,5 +145,15 @@ export default class IndexView extends DialogoView {
             this.#btnLogout.hidden = true;
             this.#btnLogin.hidden = false;
         }
+    }
+
+    /**Switches the hidden property of the stats button. */
+    switchStatsBtn() {
+        this.#btnStats = document.getElementById("btnStats");
+
+        if(this.#btnStats.hidden)
+            this.#btnStats.hidden = false;
+        else
+            this.#btnStats.hidden = true;
     }
  }

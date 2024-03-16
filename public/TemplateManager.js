@@ -3,8 +3,9 @@ import DialogoModel from "./DialogoModel.js";
 export default class TemplateManager {
     static templateNames = ["indexTemplate", "languageStartTemplate", "createuserTemplate", 
                             "loginTemplate", "learnAlphabetTemplate", "settingsTemplate",
-                            "languageportalTemplate", "learnVerbsTemplate", "associateVerbsTemplate"];
-    static templatesDir = "./Templates/";
+                            "languageportalTemplate", "learnVerbsTemplate", "associateVerbsTemplate",
+                            "statsTemplate"];
+    static templatesDir = "Templates/";
 
     static initializeTemplates() {
         return Promise.all(this.templateNames.map(file => {
