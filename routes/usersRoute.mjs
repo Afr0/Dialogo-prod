@@ -46,6 +46,10 @@ USER_API.post('/', express.json(), preferredLanguage, async (req, res) => {
     // https://www.freecodecamp.org/news/javascript-object-destructuring-spread-operator-rest-parameter/
     let { userName, verifier, salt } = req.body;
 
+    //u0400-u04FF = Cyrillic alphabet.
+    if (!/^[a-æøåA-ÆØÅ0-9\s\u0400-\u04FF]+$/i.test(userName))
+        res.status(HttpCodes.ClientSideErrorResponse.BadRequest).end(); //Fuck off!
+
     if (userName != "" && verifier != "" && salt != "") {
         let user = new User(userName, verifier, salt);
 
@@ -68,6 +72,10 @@ USER_API.post('/', express.json(), preferredLanguage, async (req, res) => {
 
 USER_API.post('/login', express.json(), async (req, res) => {
     let { userName, ephemeral } = req.body;
+
+    //u0400-u04FF = Cyrillic alphabet.
+    if (!/^[a-æøåA-ÆØÅ0-9\s\u0400-\u04FF]+$/i.test(userName))
+        res.status(HttpCodes.ClientSideErrorResponse.BadRequest).end(); //Fuck off!
 
     let user = users.find(user => user && user.getUsername() === userName);
 
@@ -93,6 +101,11 @@ USER_API.post('/login', express.json(), async (req, res) => {
 
 USER_API.post('/proof', express.json(), async (req, res) => {
     let { userName, proof } = req.body;
+
+    //u0400-u04FF = Cyrillic alphabet.
+    if (!/^[a-æøåA-ÆØÅ0-9\s\u0400-\u04FF]+$/i.test(userName))
+        res.status(HttpCodes.ClientSideErrorResponse.BadRequest).end(); //Fuck off!
+
     let serverSecretEphemeral = serverSecrets[userName];
 
     let user = users.find(user => user && user.getUsername() === userName);
@@ -128,6 +141,11 @@ USER_API.post('/proof', express.json(), async (req, res) => {
 
 USER_API.post('/logout', express.json(), async (req, res) => {
     let { userName, sessionID } = req.body;
+
+    //u0400-u04FF = Cyrillic alphabet.
+    if (!/^[a-æøåA-ÆØÅ0-9\s\u0400-\u04FF]+$/i.test(userName))
+        res.status(HttpCodes.ClientSideErrorResponse.BadRequest).end(); //Fuck off!
+
     let encryptionKey;
 
     for (const [sessionID, details] of Object.entries(sessionDetails)) {
@@ -157,6 +175,10 @@ USER_API.post('/logout', express.json(), async (req, res) => {
 
 USER_API.put('/', express.json(), async (req, res) => {
     let { sessionID, userName, preferredLanguage, knownAlphabets } = req.body;
+
+    //u0400-u04FF = Cyrillic alphabet.
+    if (!/^[a-æøåA-ÆØÅ0-9\s\u0400-\u04FF]+$/i.test(userName))
+        res.status(HttpCodes.ClientSideErrorResponse.BadRequest).end(); //Fuck off!
 
     let session = sessionDetails[sessionID];
 
