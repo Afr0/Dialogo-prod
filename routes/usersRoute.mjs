@@ -76,7 +76,7 @@ USER_API.post('/login', express.json(), async (req, res) => {
 
     //u0400-u04FF = Cyrillic alphabet.
     if (!/^[a-æøåA-ÆØÅ0-9\s\u0400-\u04FF]+$/i.test(userName))
-        res.status(HttpCodes.ClientSideErrorResponse.BadRequest).end(); //Fuck off!
+        res.status(HttpCodes.ClientSideErrorResponse.BadRequest).end(); //F*ck off!
 
     let user = users.find(user => user && user.getUsername() === userName);
 
@@ -84,7 +84,13 @@ USER_API.post('/login', express.json(), async (req, res) => {
         if(!user) {
             console.log("Trying to get user from DB...");
             user = await User.getUser(userName);
-            users.push(user); //Cache user to avoid DB hits.
+
+            if(user)
+                users.push(user); //Cache user to avoid DB hits.
+            else {
+                res.status(HttpCodes.ClientSideErrorResponse.BadRequest).send("User didn't exist.").end();
+                return;
+            }
         }
 
         clientEphemerals[userName] = ephemeral;
@@ -96,7 +102,7 @@ USER_API.post('/login', express.json(), async (req, res) => {
             {salt: user.getSalt(), ephemeral: serverEphemeral.public}));
     } catch(error) {
         console.log(error);
-        res.status(HttpCodes.ClientSideErrorResponse.NotAcceptable).json(JSON.stringify({}));
+        res.status(HttpCodes.ClientSideErrorResponse.BadRequest).send("Error during login.").end();
     }
 });
 
