@@ -44,6 +44,11 @@ export default class AssociateVerbsGameView extends DialogoView {
                 console.warn(`The value of verb[${key}] is not a string:`, verb[key]);
         }
 
+        let header = document.getElementById("Header");
+        LanguageManager.getTranslation("associateverbs").then((translation) => {
+            header.textContent = translation;
+        });
+
         let divI = document.getElementById("I");
         divI.textContent = this.#pronouns[0];
 
