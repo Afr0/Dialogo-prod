@@ -18,6 +18,7 @@ export default class AssociateVerbsGameView extends DialogoView {
     #speech;
 
     #score = 0;
+    #numDrops = 0;
 
     /**Constructs a new AssociateVerbsGameView instance.
      * @param {string} [viewID=""] The id of the view to create.
@@ -43,6 +44,11 @@ export default class AssociateVerbsGameView extends DialogoView {
             else
                 console.warn(`The value of verb[${key}] is not a string:`, verb[key]);
         }
+
+        let header = document.getElementById("Header");
+        LanguageManager.getTranslation("associateverbs").then((translation) => {
+            header.textContent = translation;
+        });
 
         let divI = document.getElementById("I");
         divI.textContent = this.#pronouns[0];
@@ -82,22 +88,22 @@ export default class AssociateVerbsGameView extends DialogoView {
 
     /**Populates the verbs container with the verbs used to construct this class. */
     #populateVerbs() {
-        let verbsContainer = document.getElementById('verbs-container');
+        let verbsContainer = document.getElementById("verbs-container");
         let verbEntries = Object.entries(this.#verbs);
         this.shuffleArray(verbEntries);
     
         verbEntries.forEach(([pronoun, verb]) => {
-            const verbDiv = document.createElement('div');
-            verbDiv.classList.add('verb');
+            const verbDiv = document.createElement("div");
+            verbDiv.classList.add("verb");
             verbDiv.textContent = verb;
-            verbDiv.setAttribute('draggable', true);
-            verbDiv.addEventListener('dragstart', this.#dragStart);
+            verbDiv.setAttribute("draggable", true);
+            verbDiv.addEventListener("dragstart", this.#dragStart);
             verbsContainer.appendChild(verbDiv);
         });
 
-        document.querySelectorAll('.pronoun').forEach(item => {
-            item.addEventListener('dragover', this.#allowDrop);
-            item.addEventListener('drop', this.#drop);
+        document.querySelectorAll(".pronoun").forEach(item => {
+            item.addEventListener("dragover", this.#allowDrop);
+            item.addEventListener("drop", this.#drop);
         });
     }
 
@@ -114,30 +120,65 @@ export default class AssociateVerbsGameView extends DialogoView {
     /**Event handler for the drop event.*/
     #drop = (e) => {
         e.preventDefault();
-        const pronoun = e.target.textContent.trim();
+        let pronoun = e.target.textContent.trim();
+
         if (this.#draggedItem.textContent === this.#verbs[pronoun]) {
             e.target.appendChild(this.#draggedItem);
-
             this.#speech.text = pronoun + " " + this.#verbs[pronoun];
             window.speechSynthesis.speak(this.#speech);
-            
             this.#score++;
-            this.#lblScore = document.getElementById("lblScore");
-            LanguageManager.getTranslation("score").then((translation) => {
-                this.#lblScore.textContent = translation + this.#score.toString();
-            });
-
-            if(this.#score >= 6)
+            this.#numDrops++;
+        } else 
+            if(this.#score > 0) this.#score--;
+    
+        LanguageManager.getTranslation("score").then((translation) => {
+            this.#lblScore.textContent = translation + this.#score.toString();
+        });
+    
+        if (this.#numDrops === Object.keys(this.#verbs).length) {
+            if (this.#score === Object.keys(this.#verbs).length)
                 this.#navigateToLanguagePortalEvent();
-        } else {
-            if(this.#score > 0)
-                this.#score--;
-
-            this.#lblScore = document.getElementById("lblScore");
-            LanguageManager.getTranslation("score").then((translation) => {
-                this.#lblScore.textContent = translation + this.#score.toString();
-            });
+            else if (this.#score < Object.keys(this.#verbs).length) {
+                LanguageManager.getTranslation("goagain").then(async (translation) => {
+                    await this.createConfirmationToast(translation, 
+                    async () => await this.#resetGame(),
+                    async () => await this.#navigateToLanguagePortalEvent());
+                });
+            }
         }
+    };
+    
+    /**Resets the game if the player wants to practice more! :D */
+    #resetGame() {
+        this.#score = 0;
+        this.#numDrops = 0;
+
+        let verbEntries = Object.entries(this.#verbs);
+        this.shuffleArray(verbEntries);
+
+        let divI = document.getElementById("I");
+        divI.removeChild(divI.lastChild);
+    
+        let divYou = document.getElementById("You");
+        divYou.removeChild(divYou.lastChild);
+    
+        let divHe = document.getElementById("He");
+        divHe.removeChild(divHe.lastChild);
+    
+        let divWe = document.getElementById("We");
+        divWe.removeChild(divWe.lastChild);
+
+        let divYouTwo = document.getElementById("YouTwo");
+        divYouTwo.removeChild(divYouTwo.lastChild);
+
+        let divThey = document.getElementById("They");
+        divThey.removeChild(divThey.lastChild);
+
+        this.#populateVerbs();
+    
+        LanguageManager.getTranslation("score").then((translation) => {
+            this.#lblScore.textContent = translation + "0"; //Reset score to 0 in display
+        });
     }
 
     /**Event handler for navigating to the Index view. */
