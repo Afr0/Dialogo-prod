@@ -494,6 +494,7 @@ export default class DialogoModel {
 
    static INDEXVIEW_ID = "indexView";
    static SETTINGSVIEW_ID = "settingsView";
+   static STATSVIEW_ID = "statsView";
    static LOGINVIEW_ID = "loginView";
    static LANGUAGESTARTVIEW_ID = "languageStartView";
    static ALPHABETGAMEVIEW_ID = "learnAlphabetView";
