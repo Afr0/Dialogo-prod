@@ -14,7 +14,7 @@ server.set('port', port);
 
 server.get('/manifest.json', (req, res) => {
     res.type('application/manifest+json');
-    res.sendFile('manifest.json');
+    res.sendFile('public/manifest.json');
 });
 
 //Avoid buffer overflows.
