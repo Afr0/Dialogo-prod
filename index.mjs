@@ -12,11 +12,6 @@ const server = express();
 const port = (process.env.PORT || 8080);
 server.set('port', port);
 
-server.get('/manifest.json', (req, res) => {
-    res.type('application/manifest+json');
-    res.sendFile('public/manifest.json');
-});
-
 //Avoid buffer overflows.
 server.use(express.json({ limit: '500kb' }));
 
@@ -40,6 +35,11 @@ server.use("/verbs", VERB_API);
 // Enable logging for server
 /*const logger = new SuperLogger();
 server.use(logger.createAutoHTTPRequestLogger());*/ // Will log all http method requests
+
+server.get('/manifest.json', (req, res) => {
+    res.type('application/manifest+json');
+    res.sendFile('public/manifest.json');
+});
 
 // A get request handler example
 server.get("/", (req, res) => {
