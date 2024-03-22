@@ -111,7 +111,7 @@ body {
 /*Mobile devices.*/
 @media (max-width: 414px) {
     .currentVerb {
-        font-size: 66px;
+        font-size: 60px;
         overflow-wrap: break-word;
         word-wrap: break-word;
     }
