@@ -1,6 +1,7 @@
 import express from "express";
 import { HttpCodes } from "../modules/httpConstants.mjs";
 import Verb from  "../modules/Verb.mjs";
+import { compress, decompress } from "compress-json";
 
 const VERB_API = express.Router();
 
@@ -13,9 +14,9 @@ VERB_API.get("/", express.json(), async (req, res) => {
     //there are hundreds of verbs.
     let verbs = Object.values(verbsData).map(verb => ({
         name: verb.getName(),
-        english: JSON.parse(verb.getEnglishVerb()),
-        italian: JSON.parse(verb.getItalianVerb()),
-        russian: JSON.parse(verb.getRussianVerb()),
+        english: compress(JSON.parse(verb.getEnglishVerb())),
+        italian: compress(JSON.parse(verb.getItalianVerb())),
+        russian: compress(JSON.parse(verb.getRussianVerb())),
     }));
     
     res.status(HttpCodes.SuccessfulResponse.Ok).json(verbs);

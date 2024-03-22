@@ -25,6 +25,7 @@
     "biginteger": "^1.0.3",
     "browserify": "^17.0.0",
     "chalk": "^2.4.2",
+    "compress-json": "^3.0.0",
     "dotenv": "^16.4.3",
     "drag-drop-touch": "^1.3.1",
     "express": "^4.18.2",

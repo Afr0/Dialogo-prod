@@ -3,9 +3,10 @@ import VerbGameView from "../Views/VerbGameView.js";
 import LanguageManager, { Languages } from "../LanguageManager.js";
 import IndexController from "../Controllers/IndexController.js";
 import AssociateVerbsGameController from "./AssociateVerbsGameController.js";
+import {compress, decompress} from "compress-json";
 
 /**
- * Controller for the Login view.
+ * Controller for the Verb game view.
  */
 export default class VerbGameController {
     #Model;
@@ -14,8 +15,8 @@ export default class VerbGameController {
     #currentLanguage = "";
     #currentVerb;
 
-    /**Constructs a new instance of the AlphabetGameController.
-     * @param {string} [learningLanguage=""] What alphabet is the user learning?
+    /**Constructs a new instance of the VerbGameController.
+     * @param {string} [learningLanguage=""] What verb is the user learning?
      */
     constructor(learningLanguage = "") {
         this.#Model = new DialogoModel(DialogoModel.MAIN_CACHE_NAME);
@@ -24,7 +25,7 @@ export default class VerbGameController {
 
         this.#Model.fetchData(VERBS_URL, false).then(verbs => {
             let verb = verbs[this.getRandomArbitrary(0, verbs.length)];
-            this.#currentVerb = verb[this.#currentLanguage];
+            this.#currentVerb = decompress(verb[this.#currentLanguage]);
             let currentBCP47 = Languages.BCP47FromLangName(this.#currentLanguage);
             this.#View = new VerbGameView(DialogoModel.VERBSGAMEVIEW_ID.replace("View", "Template"),
             verb[this.#currentLanguage], verb[this.#appLanguage], currentBCP47);
