@@ -28,7 +28,7 @@ export default class VerbGameController {
             this.#currentVerb = decompress(verb[this.#currentLanguage]);
             let currentBCP47 = Languages.BCP47FromLangName(this.#currentLanguage);
             this.#View = new VerbGameView(DialogoModel.VERBSGAMEVIEW_ID.replace("View", "Template"),
-            verb[this.#currentLanguage], verb[this.#appLanguage], currentBCP47);
+            decompress(verb[this.#currentLanguage]), decompress(verb[this.#appLanguage]), currentBCP47);
             this.#View.onNavigatingToAssociateVerbsGame(() => this.#navigateToAssociateVerbsGame());
             this.#View.onNavigatingToIndex(() => this.navigateToIndex());
         }).catch(error => console.error("Error loading verbs: ", error));
