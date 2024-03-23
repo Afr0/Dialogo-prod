@@ -1,6 +1,76 @@
 <template id="indexTemplate">
     <div id="indexView" class="view">
-        <h1>Dialogo</h1>
+        <style>
+            /*Mobile devices.*/
+            @media (max-width: 430px) {
+                .logoContainer {
+                    max-width: 100%;
+                    height: auto;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                #imgLogo {
+                    max-width: 100%; /* Gjør at bildet tilpasser seg containerens bredde */
+                    height: auto; /* Beholder bildets opprinnelige proporsjoner */
+                    max-height: 350px; /* Setter en maksimal høyde */
+                    display: block; /* Gjør bildet til en blokkelement for bedre håndtering av sentrering */
+                    margin: 0 auto; /* Sentrerer blokkelementer horisontalt */
+                }
+            }
+
+            .logoContainer {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        
+            .buttonContainer {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                flex-wrap: wrap;
+                padding: 10px;
+                position: absolute;
+                bottom: 16px;
+                right: 16px;
+                left: 16px;
+                justify-content: center;
+            }
+        
+            .btnNewUser, .btnLogin, .btnSettings, .btnStart {
+                flex: 1 1 auto;
+                flex-grow: 1;
+                margin: 5px;
+                max-width: 150px;
+            }
+        
+            .btnNewUser {
+                background-color: #F2CB05;
+                color: #594B02;
+                border-radius: 50%;
+            }
+            .btnLogin {
+                background-color: #F2CB05;
+                color: #594B02;
+                border-radius: 50%;
+            }
+            .btnSettings {
+                background-color: #F2CB05;
+                color: #594B02;
+                border-radius: 50%;
+            }
+            .btnStart {
+                background-color: #F2CB05;
+                color: #594B02;
+                border-radius: 50%;
+            }
+        </style>
+
+        <div class="logoContainer">
+            <img id="imgLogo"></img>
+        </div>
         <div class="buttonContainer">
             <button title="Create a new user to track your scores" id="btnNewUser" class="btnNewUser">Create user</button>
             <button id="btnLogin" class="btnLogin">Log in</button>

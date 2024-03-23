@@ -4,6 +4,7 @@ import LanguageManager from "../LanguageManager.js";
 export default class IndexView extends DialogoView {
     #columnClass;
     
+    #imgLogo;
     #btnLogin;
     #btnLogout;
     #btnNewUser;
@@ -25,6 +26,9 @@ export default class IndexView extends DialogoView {
      */
     constructor(viewID="") {
         super(viewID);
+
+        this.#imgLogo = document.getElementById("imgLogo");
+        this.#imgLogo.src = "data/images/logo.png";
 
         this.#btnStart = document.getElementById("btnStart");
         if (this.#btnStart) {
