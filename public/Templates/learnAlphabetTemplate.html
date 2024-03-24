@@ -1,5 +1,24 @@
 <template id="learnAlphabetTemplate">
     <div id="learnAlphabetView" class="view">
+        <style>
+            .currentChar {
+                font-size: 96px;
+                cursor: pointer;
+                text-align: center;
+            }
+
+            .currentAppChar {
+                font-size: 50px;
+                text-align: center;
+            }
+
+            .currentCharDiv {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
         <div class="header">
             <button id="backBtn" class="backButton"><-</button>
         </div>

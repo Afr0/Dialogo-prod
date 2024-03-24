@@ -1,11 +1,40 @@
 <template id="learnVerbsTemplate">
     <div id="learnVerbsView" class="view">
+        <style>
+            .currentVerb {
+                font-size: 96px;
+                cursor: pointer;
+                text-align: center;
+            }
+            
+            .currentAppVerb {
+                font-size: 50px;
+                text-align: center;
+            }
+
+            .currentVerbDiv {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            /*Mobile devices.*/
+            @media (max-width: 414px) {
+                .currentVerb {
+                    font-size: 60px;
+                    overflow-wrap: break-word;
+                    word-wrap: break-word;
+                }
+            }
+        </style>
+
         <div class="header">
             <button id="backBtn" class="backButton"><-</button>
         </div>
-        <div class="currentCharDiv">
-            <label id="lblCurrentVerb" class="currentChar" style="cursor: pointer;">A</label>
-            <label id="lblCurrentAppVerb" class="currentAppChar">A</label>
+        <div class="currentVerbDiv">
+            <label id="lblCurrentVerb" class="currentVerb" style="cursor: pointer;">A</label>
+            <label id="lblCurrentAppVerb" class="currentAppVerb">A</label>
         </div>    
     </div>
 </template>

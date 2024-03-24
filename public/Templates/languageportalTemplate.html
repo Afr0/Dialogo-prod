@@ -1,5 +1,30 @@
 <template id="languageportalTemplate">
     <div id="languageportalView" class="view">
+        <style>
+            .btnAlphabet, .btnVerbs {
+                background-color: #F2CB05;
+                color: #594B02;
+                border-radius: 50%;
+            
+                flex: 1 1 auto;
+                flex-grow: 1;
+                margin: 5px;
+                max-width: 150px;
+            }
+
+            .buttonContainer {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                flex-wrap: wrap;
+                padding: 10px;
+                position: absolute;
+                bottom: 16px;
+                right: 16px;
+                left: 16px;
+                justify-content: center;
+            }
+        </style>
         <div class="header">
             <button id="backBtn" class="backButton"><-</button><h1 id="Header">Language portal</h1>
         </div>
