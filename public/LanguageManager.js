@@ -6,9 +6,9 @@ export class Languages {
     }
 
     static BCP47 = {
-        Italian: "it-IT",
+        Italian: "it",
         English: "en-GB",
-        Russian: "ru-RU"
+        Russian: "ru"
     }
 
     /**Returns the string representation of a language based on a given key.
