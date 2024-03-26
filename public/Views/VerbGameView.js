@@ -13,6 +13,7 @@ export default class VerbGameView extends DialogoView {
     #currentVerb = 1;
     #BCP47;
     #speech;
+    #couldLoadVoices = false;
 
     /**Constructs a new VerbGameView instance.
      * @param {string} [viewID=""] The id of the view to create.
@@ -30,6 +31,10 @@ export default class VerbGameView extends DialogoView {
         this.#speech = new SpeechSynthesisUtterance();
         this.#initializeVoice().then(() => {
             this.#setSpeechVoice();
+
+            if(!this.#couldLoadVoices)
+                this.#speech.lang = this.#BCP47;
+            
             window.speechSynthesis.speak(this.#speech);
         });
 
@@ -74,6 +79,7 @@ export default class VerbGameView extends DialogoView {
             let selectedVoice = voices.find(voice => voice.lang === this.#BCP47);
             if (selectedVoice) {
                 this.#speech.voice = selectedVoice;
+                this.#couldLoadVoices = true;
             } else {
                 console.warn('No matching voice found. Using default.');
             }
