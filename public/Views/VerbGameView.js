@@ -1,5 +1,6 @@
 import DialogoView from "./DialogoView.js";
 import LanguageManager from "../LanguageManager.js";
+import iOSVoiceSelector from "../iOSVoiceSelector.js";
 
 /**View for the verb game. */
 export default class VerbGameView extends DialogoView {
@@ -73,9 +74,9 @@ export default class VerbGameView extends DialogoView {
         });
     }
 
+    /**Initializes the Speech Synthesis API. */
     async #initializeVoice() {
         await this.#waitForVoicesToLoad().then(voices => {
-            console.log(voices);
             let selectedVoice = voices.find(voice => voice.lang === this.#BCP47);
             if (selectedVoice) {
                 this.#speech.voice = selectedVoice;
@@ -91,6 +92,7 @@ export default class VerbGameView extends DialogoView {
             let attempts = 0;
             const checkVoices = () => {
                 let voices = window.speechSynthesis.getVoices();
+                voices = iOSVoiceSelector.getiOSVoices(voices);
                 if (voices.length > 0) {
                     resolve(voices);
                 } else if (attempts < 10) { // Try up to 10 times
