@@ -12,7 +12,8 @@ self.addEventListener("install", (event) => {
             "/bundle.js",
             "/data",
             "/Templates",
-            "/Locales"
+            "/Locales",
+            "/server-images"
         ]),
     );
 });
