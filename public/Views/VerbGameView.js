@@ -5,6 +5,7 @@ import iOSVoiceSelector from "../iOSVoiceSelector.js";
 /**View for the verb game. */
 export default class VerbGameView extends DialogoView {
     #backBtn;
+    #img;
 
     #navigateToIndexEvent;
     #navigateToAssociateVerbsGameEvent;
@@ -18,11 +19,12 @@ export default class VerbGameView extends DialogoView {
 
     /**Constructs a new VerbGameView instance.
      * @param {string} [viewID=""] The id of the view to create.
+     * @param {string} verbName The name of the verb aS sent by the server.
      * @param {Object} verb The verb to display in this VerbGameView instance.
      * @param {Object} appLanguageVerb The verb in the app's language, to display under the verb.
      * @param {string} [BCP47=""] The BCP47 code of the verb's language, so it can be spoken.
      */
-    constructor(viewID="", verb, appLanguageVerb, BCP47 = "") {
+    constructor(viewID="", verbName, verb, appLanguageVerb, BCP47 = "") {
         super(viewID);
 
         this.#verb = verb;
@@ -45,10 +47,14 @@ export default class VerbGameView extends DialogoView {
         LanguageManager.getTranslation("back").then((translation) => {
             this.#backBtn.textContent = translation;
         });
-            
+
         this.#backBtn.addEventListener("click", async () => {
             await this.#navigateToIndexEvent();
         });
+
+        this.#img = document.getElementById("img");
+        this.#img.src = "./server-images/verbs/" + verbName + "/" + 
+            this.#currentVerb + "-" + verbName + ".png";
 
         let lblCurrentAppVerb = document.getElementById("lblCurrentAppVerb");
         lblCurrentAppVerb.innerText = this.#appLanguageVerb[this.#currentVerb.toString()];
@@ -68,6 +74,9 @@ export default class VerbGameView extends DialogoView {
                 this.#speech.text = this.#verb[this.#currentVerb];
                 window.speechSynthesis.speak(this.#speech);
             }
+
+            this.#img.src = "./server-images/verbs/" + verbName + "/" + 
+                this.#currentVerb + "-" + verbName + ".png";
 
             lblCurrentVerb.innerText = this.#verb[this.#currentVerb.toString()];
             lblCurrentAppVerb.innerText = this.#appLanguageVerb[this.#currentVerb.toString()];
