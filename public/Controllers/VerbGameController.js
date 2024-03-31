@@ -24,6 +24,7 @@ export default class VerbGameController {
         this.#currentLanguage = learningLanguage.toLowerCase();
 
         this.#Model.fetchData(VERBS_URL, false).then(verbs => {
+            console.log(verbs);
             let verb = verbs[this.getRandomArbitrary(0, verbs.length)];
             let verbName = verb.name;
             this.#currentVerb = decompress(verb[this.#currentLanguage]);
@@ -33,13 +34,7 @@ export default class VerbGameController {
                 verbName, decompress(verb[this.#currentLanguage]), 
                 decompress(verb[this.#appLanguage]), currentBCP47);
             this.#View.onNavigatingToAssociateVerbsGame(() => this.#navigateToAssociateVerbsGame());
-            this.#View.onNavigatingToIndex(() => this.navigateToIndex());
         }).catch(error => console.error("Error loading verbs: ", error));
-
-        /**Event handler for navigating to the index. */
-        async function navigateToIndex() {
-            await IndexController.createIndexController();
-        }
     }
 
     /**Event handler for navigating to the associate verbs game.*/

@@ -7,7 +7,6 @@ export default class VerbGameView extends DialogoView {
     #backBtn;
     #img;
 
-    #navigateToIndexEvent;
     #navigateToAssociateVerbsGameEvent;
 
     #verb = {};
@@ -42,15 +41,6 @@ export default class VerbGameView extends DialogoView {
         });
 
         this.#speech.text = this.#verb[this.#currentVerb];
-
-        this.#backBtn = document.getElementById("backBtn");
-        LanguageManager.getTranslation("back").then((translation) => {
-            this.#backBtn.textContent = translation;
-        });
-
-        this.#backBtn.addEventListener("click", async () => {
-            await this.#navigateToIndexEvent();
-        });
 
         this.#img = document.getElementById("img");
         this.#img.src = "./server-images/verbs/" + verbName + "/" + 
@@ -134,10 +124,6 @@ export default class VerbGameView extends DialogoView {
             window.speechSynthesis.onvoiceschanged = voicesLoaded;
         else
             voicesLoaded(); //Execute immediately if voices are already loaded or the event is not supported
-    }
-
-    onNavigatingToIndex(callback) {
-        this.#navigateToIndexEvent = callback;
     }
 
     onNavigatingToAssociateVerbsGame(callback) {

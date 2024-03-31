@@ -6,7 +6,7 @@ import LanguagePortalController from "./LanguagePortalController.js";
 import DragnDrop from "drag-drop-touch";
 
 /**
- * Controller for the Login view.
+ * Controller for the Associate Verbs view.
  */
 export default class AssociateVerbsGameController {
     #Model;
